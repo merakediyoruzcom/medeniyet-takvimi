@@ -1,0 +1,401 @@
+@import "tailwindcss";
+
+:root {
+  /* Light scheme primitives (Ahar Parchment) */
+  --bg-light: #F6F1E7;
+  --surface-light: #EDE5D5;
+  --surface-raised-light: #FAF7F0;
+  --border-light: #D5C9B2;
+  --ink-light: #191C24;
+  --muted-light: #5A554A;
+  --accent-light: #7C5205;
+  --accent-contrast-light: #FAF7F0;
+  --success-light: #156F4B;
+  --danger-light: #A62B2B;
+  --scrollbar-track-light: #EDE5D5;
+  --scrollbar-thumb-light: #8D816C;
+
+  /* Dark scheme primitives (Obsidian Observatory) */
+  --bg-dark: #111317;
+  --surface-dark: #181B22;
+  --surface-raised-dark: #222630;
+  --border-dark: #2E3340;
+  --ink-dark: #ECE7DC;
+  --muted-dark: #A69E8E;
+  --accent-dark: #D9A441;
+  --accent-contrast-dark: #111317;
+  --success-dark: #4ADE9F;
+  --danger-dark: #F28482;
+  --scrollbar-track-dark: #181B22;
+  --scrollbar-thumb-dark: #5B6070;
+
+  /* Semantic roles (base fallback before @supports light-dark) */
+  --bg: var(--bg-light);
+  --surface: var(--surface-light);
+  --surface-raised: var(--surface-raised-light);
+  --border: var(--border-light);
+  --ink: var(--ink-light);
+  --muted: var(--muted-light);
+  --accent: var(--accent-light);
+  --accent-contrast: var(--accent-contrast-light);
+  --success: var(--success-light);
+  --danger: var(--danger-light);
+  --scrollbar-track: var(--scrollbar-track-light);
+  --scrollbar-thumb: var(--scrollbar-thumb-light);
+
+  /* Cycle mineral colors (paired with text labels) */
+  --cycle-red: #C94A4A;
+  --cycle-orange: #D47A3A;
+  --cycle-yellow: #C9A236;
+  --cycle-green: #3E8E63;
+  --cycle-blue: #3B7AA8;
+  --cycle-indigo: #4E5DA8;
+  --cycle-purple: #7F5AA6;
+
+  /* Typography & rhythm tokens */
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Albert Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(:has(> head > meta[name="color-scheme"][content="light"])) {
+    --bg: var(--bg-dark);
+    --surface: var(--surface-dark);
+    --surface-raised: var(--surface-raised-dark);
+    --border: var(--border-dark);
+    --ink: var(--ink-dark);
+    --muted: var(--muted-dark);
+    --accent: var(--accent-dark);
+    --accent-contrast: var(--accent-contrast-dark);
+    --success: var(--success-dark);
+    --danger: var(--danger-dark);
+    --scrollbar-track: var(--scrollbar-track-dark);
+    --scrollbar-thumb: var(--scrollbar-thumb-dark);
+  }
+}
+
+:root:has(> head > meta[name="color-scheme"][content="dark"]) {
+  color-scheme: dark;
+  --bg: var(--bg-dark);
+  --surface: var(--surface-dark);
+  --surface-raised: var(--surface-raised-dark);
+  --border: var(--border-dark);
+  --ink: var(--ink-dark);
+  --muted: var(--muted-dark);
+  --accent: var(--accent-dark);
+  --accent-contrast: var(--accent-contrast-dark);
+  --success: var(--success-dark);
+  --danger: var(--danger-dark);
+  --scrollbar-track: var(--scrollbar-track-dark);
+  --scrollbar-thumb: var(--scrollbar-thumb-dark);
+}
+
+:root:has(> head > meta[name="color-scheme"][content="light"]) {
+  color-scheme: light;
+  --bg: var(--bg-light);
+  --surface: var(--surface-light);
+  --surface-raised: var(--surface-raised-light);
+  --border: var(--border-light);
+  --ink: var(--ink-light);
+  --muted: var(--muted-light);
+  --accent: var(--accent-light);
+  --accent-contrast: var(--accent-contrast-light);
+  --success: var(--success-light);
+  --danger: var(--danger-light);
+  --scrollbar-track: var(--scrollbar-track-light);
+  --scrollbar-thumb: var(--scrollbar-thumb-light);
+}
+
+@supports (color: light-dark(white, black)) {
+  :root {
+    --bg: light-dark(var(--bg-light), var(--bg-dark));
+    --surface: light-dark(var(--surface-light), var(--surface-dark));
+    --surface-raised: light-dark(var(--surface-raised-light), var(--surface-raised-dark));
+    --border: light-dark(var(--border-light), var(--border-dark));
+    --ink: light-dark(var(--ink-light), var(--ink-dark));
+    --muted: light-dark(var(--muted-light), var(--muted-dark));
+    --accent: light-dark(var(--accent-light), var(--accent-dark));
+    --accent-contrast: light-dark(var(--accent-contrast-light), var(--accent-contrast-dark));
+    --success: light-dark(var(--success-light), var(--success-dark));
+    --danger: light-dark(var(--danger-light), var(--danger-dark));
+    --scrollbar-track: light-dark(var(--scrollbar-track-light), var(--scrollbar-track-dark));
+    --scrollbar-thumb: light-dark(var(--scrollbar-thumb-light), var(--scrollbar-thumb-dark));
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-hairline: var(--border);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-contrast: var(--accent-contrast);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Albert Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+html {
+  accent-color: var(--accent);
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scroll-padding-top: 5rem;
+}
+
+@supports not (scrollbar-color: auto) {
+  html {
+    scrollbar-width: auto;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 5px;
+  }
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  min-height: 100dvh;
+  overflow-x: clip;
+}
+
+button,
+a,
+select,
+input,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.safe-main-bottom {
+  padding-bottom: calc(5.75rem + env(safe-area-inset-bottom));
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Visible accessible focus indicator */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0.75rem;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  background-color: var(--accent);
+  color: var(--accent-contrast);
+  font-weight: 600;
+  border-radius: 0.5rem;
+}
+
+.skip-link:focus {
+  left: 1rem;
+}
+
+/* Observatory hairline plate styling */
+.observatory-plate {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.observatory-plate-raised {
+  background-color: var(--surface-raised);
+  border: 1px solid var(--border);
+}
+
+.double-archival-frame {
+  border: 1px solid var(--border);
+  box-shadow: inset 0 0 0 4px var(--surface-raised), inset 0 0 0 5px var(--border);
+}
+
+/* Native <dialog> top-layer scroll containment & discrete animations */
+dialog:modal {
+  overscroll-behavior: contain;
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--border);
+  background-color: var(--surface-raised);
+  color: var(--ink);
+  max-width: min(30rem, calc(100vw - 2rem));
+  width: 100%;
+  border-radius: 1rem;
+}
+
+dialog::backdrop {
+  overflow: hidden;
+  overscroll-behavior: contain;
+  background-color: rgb(12 14 18 / 0);
+  transition-property: background-color, display, overlay;
+  transition-duration: 240ms;
+  transition-timing-function: var(--ease-out-quart);
+  transition-behavior: allow-discrete;
+}
+
+dialog[open]::backdrop {
+  background-color: rgb(12 14 18 / 0.65);
+  @starting-style {
+    background-color: rgb(12 14 18 / 0);
+  }
+}
+
+dialog.observatory-dialog {
+  opacity: 0;
+  transition-property: opacity, transform, display, overlay;
+  transition-duration: 240ms;
+  transition-timing-function: var(--ease-out-quart);
+  transition-behavior: allow-discrete;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  dialog.observatory-dialog {
+    transform: translateY(8px) scale(0.98);
+  }
+}
+
+dialog.observatory-dialog[open] {
+  display: block;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  @starting-style {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+}
+
+@media (max-width: 639px) {
+  dialog.observatory-dialog:modal {
+    margin: auto 0 0 0;
+    max-width: 100%;
+    width: 100%;
+    max-height: 90dvh;
+    overflow-y: auto;
+    border-radius: 1.25rem 1.25rem 0 0;
+    border-bottom: none;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    dialog.observatory-dialog {
+      transform: translateY(100%);
+    }
+    dialog.observatory-dialog[open] {
+      transform: translateY(0);
+      @starting-style {
+        opacity: 0;
+        transform: translateY(100%);
+      }
+    }
+  }
+}
+
+/* Native [popover] top-layer entry/exit animations */
+[popover].observatory-popover {
+  opacity: 0;
+  transition-property: opacity, transform, display, overlay;
+  transition-duration: 180ms;
+  transition-timing-function: var(--ease-out-quart);
+  transition-behavior: allow-discrete;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [popover].observatory-popover {
+    transform: translateY(-4px) scale(0.98);
+  }
+}
+
+[popover].observatory-popover:is(:popover-open, .\:popover-open) {
+  display: block;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  @starting-style {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+  }
+}
+
+/* Same-document View Transitions */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 220ms;
+  animation-timing-function: var(--ease-out-quart);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+/* Container queries for year calendar grid */
+.month-card-container {
+  container-type: inline-size;
+}
+
+/* Archival Certificate print styling */
+@media print {
+  @page {
+    margin: 12mm;
+  }
+  body {
+    background: #ffffff !important;
+    color: #191c24 !important;
+  }
+  body * {
+    visibility: hidden;
+  }
+  #birth-card-element,
+  #birth-card-element * {
+    visibility: visible;
+  }
+  #birth-card-element {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: #faf7f0 !important;
+    color: #191c24 !important;
+    box-shadow: none !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

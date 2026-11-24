@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Medeniyet Takvimi</string>
+    <string name="title_activity_main">Medeniyet Takvimi</string>
+    <string name="package_name">com.medeniyet.takvim</string>
+    <string name="custom_url_scheme">com.medeniyet.takvim</string>
+</resources>

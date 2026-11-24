@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Build & Release Outputs
+dist/
+portable/
+release/
+tsconfig.tsbuildinfo
+
+# Environment & Secrets
+.env
+.env.*
+*.keystore
+*.jks
+
+# Android Native Generated / Local Config
+android/local.properties
+android/.gradle/
+android/build/
+android/app/build/
+android/app/src/main/assets/public/
+android/capacitor-cordova-android-plugins/build/
+
+# OS & Logs
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
