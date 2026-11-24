@@ -2,6 +2,9 @@
 
 Kış Gündönümü (21 Aralık) yılbaşını, M.Ö. 3200 Yazının İcadı miladını ve 13 × 28 günlük sabit Ay evrelerini temel alan **masaüstü + mobil PWA + yerel Android APK** uygulaması.
 
+- 🌐 **Canlı PWA (iOS & Android & Web):** [https://merakediyoruzcom.github.io/medeniyet-takvimi/](https://merakediyoruzcom.github.io/medeniyet-takvimi/)
+- 📦 **Android APK & Tek Dosya HTML İndirme:** [Son Sürüm (Releases)](https://github.com/merakediyoruzcom/medeniyet-takvimi/releases/latest)
+
 ## Kurulum ve Çalıştırma Seçenekleri
 
 ### 1. Android APK (Doğrudan Telefona Kurulum)
